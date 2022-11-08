@@ -1,5 +1,5 @@
 ﻿//-----TASK 1-----
-
+/*
 List<int> Listofnums = new List<int>() //creates new list Containing 89, 42, 65 etc
 {
     89, 42, 65, 18, 73, 15, 6, 89, 71, 17, 11, 51, 55, 91
@@ -81,7 +81,58 @@ position.Dequeue();//Removes one from the queue
 Console.WriteLine(position);
 
 Console.WriteLine(position.Count);
-
+*/
 
 //-----TASK 3-----
+
+List<int> A = new List<int>()
+{
+    19, 3, 2, 1, 7, 4, 7, 4, 10, 9, 10, 1, 3, 19
+};
+
+bool swapActive2 = true;//used in the while loop
+while (swapActive2)//while Swap active is true
+{
+    swapActive2 = false;
+    int temp2 = 0;//used in if statment
+    for (int i = 0; i < A.Count; i++)//loops through the items in the list
+    {
+        for (int j = i + 1; j < A.Count; j++)
+        {
+            if (A[i] > A[j])//checks whether the first value is higher than the second
+            {
+                temp2 = A[i];//Stores value 1 in a temporary value
+                A[i] = A[j];//changes the first value to the second
+                A[j] = temp2;//changes second value to the temporary value
+                swapActive2 = true;//notifies the code that a swap has occured
+            }
+        }
+    }
+}
+
+
+Dictionary<int, int> AlmostX = new Dictionary<int, int>();//creates new dictionary
+
+for (int i = 0; i < A.Count; i++)//loops through all of the list
+{
+    if (!AlmostX.ContainsKey(A[i]))
+    { //works ou whether the number is in the dictionary already
+        AlmostX.Add(A[i], 0);//if it is NOT, then it will add as a new item into the dictionary
+    }
+    else
+    {
+        AlmostX[A[i]]++;//if it IS in the dictionary, then it will increment the value of the dictionary item
+    }
+}
+
+List<int> X = new List<int>();
+
+foreach(var item in AlmostX.Keys)//goes through all the keys in the dictionary
+{
+    X.Add(item);//adds the key to the "X" List
+}
+
+Console.WriteLine(X);
+
+//-----TASK 4-----
 
