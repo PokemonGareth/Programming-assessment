@@ -1,9 +1,15 @@
 ﻿//-----TASK 1-----
-/*
+
 List<int> Listofnums = new List<int>() //creates new list Containing 89, 42, 65 etc
 {
     89, 42, 65, 18, 73, 15, 6, 89, 71, 17, 11, 51, 55, 91
 };
+
+Console.WriteLine("Original List: ");
+foreach (int i in Listofnums)
+{
+    Console.WriteLine($"{ i }");
+}
 
 //Sort
 bool swapActive = true;//used in the while loop
@@ -11,7 +17,7 @@ while (swapActive)//while Swap active is true
 {
     swapActive = false;
     int temp = 0;//used in if statment
-    for (int i = 0; i < Listofnums.Count; i++)//loops through the items in the list
+    for (int i = 0; i <= Listofnums.Count; i++)//loops through the items in the list
     {
         for (int j = i + 1; j < Listofnums.Count; j++)
         {
@@ -26,8 +32,14 @@ while (swapActive)//while Swap active is true
     }
 }
 
+Console.WriteLine("Sorted List: ");
+foreach (int i in Listofnums)
+{
+    Console.WriteLine($"{ i }");
+}
+
 //count
-Console.WriteLine(Listofnums.Count);//displays length of the list
+Console.WriteLine($"Count: { Listofnums.Count }");//displays length of the list
 
 //mean
 int value = 0;
@@ -38,7 +50,7 @@ for (int i = 0;i < Listofnums.Count; i++)//adds all the values together using th
     count++;
 }
 
-Console.WriteLine(value/count);//works out and displays the mean
+Console.WriteLine($"Mean: { value/count }");//works out and displays the mean
 
 //mode
 Dictionary<int, int> Mode = new Dictionary<int, int>();//creates new dictionary
@@ -55,17 +67,17 @@ for (int i = 0; i < Listofnums.Count; i++)//loops through all of the list
 
 var CommonKey = Mode.OrderByDescending(x => x.Value).First().Key;//orders the dictionary so the highest valued item is at the top. it then gets the key from the first item in the dictionary
 
-Console.WriteLine(CommonKey);
+Console.WriteLine($"Mode: { CommonKey }");
 
 //median
 int len = Listofnums.Count();//works out the length of the list
 int median = len % 2;//works out which index will be the median value
-Console.WriteLine(Listofnums[median]);//displays the median of the list
+Console.WriteLine($"Median: { Listofnums[median] }");//displays the median of the list
 
 
 
 //-----TASK 2-----
-
+/*
 Queue<string> position = new Queue<string>();//creates queue
 position.Enqueue("One");//adds queue values
 position.Enqueue("Two");
@@ -84,7 +96,7 @@ Console.WriteLine(position.Count);
 */
 
 //-----TASK 3-----
-
+/*
 List<int> A = new List<int>()
 {
     19, 3, 2, 1, 7, 4, 7, 4, 10, 9, 10, 1, 3, 19
@@ -133,6 +145,7 @@ foreach(var item in AlmostX.Keys)//goes through all the keys in the dictionary
 }
 
 Console.WriteLine(X);
+*/
 
 //-----TASK 4-----
 
