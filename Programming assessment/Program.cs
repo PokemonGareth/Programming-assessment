@@ -12,20 +12,20 @@ static List<int> BubbleSort(List<int> nums)//Bubble sort
 {
     bool swapActive = false;
     int temp = 0;
-    for (int i = 0; i <= nums.Count; i++)
+    while (swapActive)
     {
-        for (int j = i + 1; j <= nums.Count;)
+        for (int i = 0; i <= nums.Count - 2; i++)
         {
-            if (nums[j] > nums[i])
+            if (nums[i] > nums[i + 1])
             {
                 temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
+                nums[i] = nums[i + 1];
+                nums[i + 1] = temp;
                 swapActive = true;
             }
         }
     }
-    while (swapActive) ;
+
     return nums;
 };
 
