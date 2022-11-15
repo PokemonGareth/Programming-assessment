@@ -1,42 +1,44 @@
 ﻿//-----TASK 1-----
+static void PrintList(List<int> list, string Title)//a mathod to print lists
+{
+    Console.WriteLine($"{ Title }");
+    foreach (int i in list)
+    {
+        Console.WriteLine($"{ i }");
+    }
+}
+
+static List<int> BubbleSort(List<int> nums)//Bubble sort
+{
+    bool swapActive = false;
+    int temp = 0;
+    for (int i = 0; i <= nums.Count; i++)
+    {
+        for (int j = i + 1; j <= nums.Count;)
+        {
+            if (nums[j] > nums[i])
+            {
+                temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                swapActive = true;
+            }
+        }
+    }
+    while (swapActive) ;
+    return nums;
+};
 
 List<int> Listofnums = new List<int>() //creates new list Containing 89, 42, 65 etc
 {
     89, 42, 65, 18, 73, 15, 6, 89, 71, 17, 11, 51, 55, 91
 };
 
-Console.WriteLine("Original List: ");
-foreach (int i in Listofnums)
-{
-    Console.WriteLine($"{ i }");
-}
+PrintList(Listofnums, "Original List:");//calls function to display list
 
-//Sort
-bool swapActive = true;//used in the while loop
-while (swapActive)//while Swap active is true
-{
-    swapActive = false;
-    int temp = 0;//used in if statment
-    for (int i = 0; i <= Listofnums.Count; i++)//loops through the items in the list
-    {
-        for (int j = i + 1; j < Listofnums.Count; j++)
-        {
-            if (Listofnums[i] > Listofnums[j])//checks whether the first value is higher than the second
-            {
-                temp = Listofnums[i];//Stores value 1 in a temporary value
-                Listofnums[i] = Listofnums[j];//changes the first value to the second
-                Listofnums[j] = temp;//changes second value to the temporary value
-                swapActive = true;//notifies the code that a swap has occured
-            }
-        }
-    }
-}
+List<int> sorted = BubbleSort(Listofnums);//calls function to sort list
 
-Console.WriteLine("Sorted List: ");
-foreach (int i in Listofnums)
-{
-    Console.WriteLine($"{ i }");
-}
+PrintList(sorted, "Sorted List:");//calls function to display the sorted list
 
 //count
 Console.WriteLine($"Count: { Listofnums.Count }");//displays length of the list
@@ -75,7 +77,6 @@ int median = len % 2;//works out which index will be the median value
 Console.WriteLine($"Median: { Listofnums[median] }");//displays the median of the list
 
 
-
 //-----TASK 2-----
 /*
 Queue<string> position = new Queue<string>();//creates queue
@@ -84,13 +85,29 @@ position.Enqueue("Two");
 position.Enqueue("Three");
 position.Enqueue("Four");
 position.Enqueue("Five");
-Console.WriteLine(position);
+
+foreach (string i in position)//prints queue
+{
+    Console.WriteLine($"{ i }");
+};
+Console.WriteLine("----------------------");
+
 
 position.Enqueue("Six");//adds six to the end of the queue
-Console.WriteLine(position);
+foreach (string i in position)
+{
+    Console.WriteLine($"{ i }");
+};
+
+Console.WriteLine("----------------------");
 
 position.Dequeue();//Removes one from the queue
-Console.WriteLine(position);
+foreach (string i in position)
+{
+    Console.WriteLine($"{ i }");
+};
+
+Console.WriteLine("----------------------");
 
 Console.WriteLine(position.Count);
 */
@@ -122,7 +139,6 @@ while (swapActive2)//while Swap active is true
     }
 }
 
-
 Dictionary<int, int> AlmostX = new Dictionary<int, int>();//creates new dictionary
 
 for (int i = 0; i < A.Count; i++)//loops through all of the list
@@ -144,7 +160,10 @@ foreach(var item in AlmostX.Keys)//goes through all the keys in the dictionary
     X.Add(item);//adds the key to the "X" List
 }
 
-Console.WriteLine(X);
+foreach (var item in X)//Prints the final list
+{
+    Console.WriteLine($"{ X }");
+}
 */
 
 //-----TASK 4-----
