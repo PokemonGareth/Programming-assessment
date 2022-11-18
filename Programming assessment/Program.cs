@@ -59,6 +59,7 @@ Console.WriteLine($"Median: { Listofnums[median] }");//displays the median of th
 */
 
 //Solution 2 = Without Predefined Functions
+/*
 static void PrintList(List<int> list, string Title)//a mathod to print lists
 {
     Console.WriteLine($"{ Title }");
@@ -140,7 +141,6 @@ static Dictionary<int, int> OrderDictionary(Dictionary<int, int> Dictionary)
 
 }
 
-
 List<int> Listofnums = new List<int>() //creates new list Containing 89, 42, 65 etc
 {
     89, 42, 65, 18, 73, 15, 6, 89, 71, 17, 11, 51, 55, 91
@@ -182,7 +182,7 @@ for (int i = 0; i < Listofnums.Count; i++)//loops through all of the list
 
 Dictionary<int,int> SortedDict = OrderDictionary(Mode);//orders the dictionary so the highest valued item is at the top. it then gets the key from the first item in the dictionary
 
-var CommonKey = SortedDict.First().Value;//gets first element from the dictionary
+var CommonKey = SortedDict.Last().Key;//gets first element from the dictionary
 
 Console.WriteLine($"Mode: { CommonKey }");
 
@@ -190,7 +190,7 @@ Console.WriteLine($"Mode: { CommonKey }");
 int len = Listofnums.Count();//works out the length of the list
 int median = len % 2;//works out which index will be the median value
 Console.WriteLine($"Median: { Listofnums[median] }");//displays the median of the list
-
+*/
 //-----TASK 2-----
 
 // Solution 1 = With Predefined functions
@@ -274,6 +274,25 @@ Console.WriteLine($"Count: { Queue.Count }");
 */
 
 //-----TASK 3-----
+//Solution 1 = With Predefinied Functions
+/*
+List<int> A = new List<int>()
+{
+    19, 3, 2, 1, 7, 4, 7, 4, 10, 9, 10, 1, 3, 19
+};
+
+A.Sort();
+
+List<int> X = A.Distinct().ToList();//Distinct Generates a table that then uses the table to eliminate any duplicates storing
+                                                          //the non duplicates within a column called results
+
+foreach (var item in X)//Prints the final list
+{
+    Console.WriteLine($"{item}");
+}
+*/
+
+//Solution 2 = Without Predefinied Functions
 /*
 List<int> A = new List<int>()
 {
@@ -328,4 +347,82 @@ foreach (var item in X)//Prints the final list
 */
 
 //-----TASK 4-----
+//Solution 1 = With Predefined Functions
 
+//Solution 2 = Without Predefined Functions
+
+List<int> Checklist = new List<int>();
+
+for (int i = 0; i < 26; i++)
+{
+    Checklist.Add(0);
+}
+
+List<char> Alphabet = new List<char>()
+{
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+};
+
+Console.WriteLine("Please enter a Pangram: ");
+string UserInput = Console.ReadLine().ToLower();
+
+foreach (char c in UserInput)
+{
+    if (c == 'U+0020')
+    {
+        UserInput.Remove(c);
+    }
+}
+
+foreach (char c in UserInput)
+{
+    Console.WriteLine(c);
+}
+
+/*
+int loopcount = 0;
+foreach (char i in UserInput)
+{
+    bool nextletter = false;
+    while (nextletter == false)
+    {
+        foreach (char c in Alphabet)
+         {
+            if (c == i)
+            {
+                Checklist[loopcount] = Checklist[loopcount] + 1;
+                loopcount++;
+                nextletter = true;
+                break;
+            }
+        }
+    }
+    nextletter = false;
+}
+
+bool swapActive = true;
+int temp = 0;
+while (swapActive)
+{
+    swapActive = false;
+    for (int i = 0; i <=Checklist.Count - 2; i++)
+    {
+        if (Checklist[i] > Checklist[i + 1])
+        {
+            temp = Checklist[i];
+            Checklist[i] = Checklist[i + 1];
+            Checklist[i + 1] = temp;
+            swapActive = true;
+        }
+    }
+}
+
+if (Checklist[0] == 0)
+{
+    Console.WriteLine($"'{UserInput}' is not a pangram.");
+}
+else
+{
+    Console.WriteLine($"'{UserInput}' is a pangram. :)");
+}
+*/
