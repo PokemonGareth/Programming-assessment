@@ -348,9 +348,46 @@ foreach (var item in X)//Prints the final list
 
 //-----TASK 4-----
 //Solution 1 = With Predefined Functions
+List<int> Checklist = new List<int>();
+
+for (int i = 0; i < 26; i++)
+{
+    Checklist.Add(0);
+}
+
+List<char> Alphabet = new List<char>()
+{
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+};
+
+Console.WriteLine("Please enter a Pangram: ");
+string UserInput = Console.ReadLine().ToLower();
+
+bool AllInAlphabet = false;
+foreach (char i in Alphabet)
+{
+    if (UserInput.Contains(i))
+    {
+        AllInAlphabet = true;
+    }
+    else
+    {
+        AllInAlphabet = false;
+        break;
+    }
+}
+
+if (AllInAlphabet == true)
+{
+    Console.WriteLine($"'{UserInput}' is a pangram.");
+}
+else
+{
+    Console.WriteLine($"'{UserInput}' is not a pangram. :)");
+}
 
 //Solution 2 = Without Predefined Functions
-
+/*
 List<int> Checklist = new List<int>();
 
 for (int i = 0; i < 26; i++)
@@ -368,18 +405,12 @@ string UserInput = Console.ReadLine().ToLower();
 
 foreach (char c in UserInput)
 {
-    if (c == 'U+0020')
+    if (c == ' ')
     {
         UserInput.Remove(c);
     }
 }
 
-foreach (char c in UserInput)
-{
-    Console.WriteLine(c);
-}
-
-/*
 int loopcount = 0;
 foreach (char i in UserInput)
 {
