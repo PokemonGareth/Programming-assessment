@@ -191,8 +191,8 @@ int len = Listofnums.Count();//works out the length of the list
 int median = len % 2;//works out which index will be the median value
 Console.WriteLine($"Median: { Listofnums[median] }");//displays the median of the list
 */
-//-----TASK 2-----
 
+//-----TASK 2-----
 // Solution 1 = With Predefined functions
 /*
 Queue<string> position = new Queue<string>();//creates queue
@@ -241,16 +241,16 @@ static void PrintQueue(string title, List<string> Queue)
     Console.WriteLine("----------------------");
 }
 
-static List<string> AddQueue(List<string> Queue, string Item)
+static List<string> AddQueue(List<string> Queue, string Item)//Method for adding to the "Queue"
 {
-    Queue.Insert(Queue.Count, Item);
+    Queue.Insert(Queue.Count, Item);//adds item to the list
 
     return Queue;
 }
 
-static List<string> RemoveQueue(List<string> Queue)
+static List<string> RemoveQueue(List<string> Queue)//Method for removing from the "Queue"
 {
-    Queue.Remove(Queue[0]);
+    Queue.Remove(Queue[0]);//removes the First item from the list
 
 
     return Queue;
@@ -264,10 +264,10 @@ List<string> Queue = new List<string>()
 int QueueLength = Queue.Count;
 PrintQueue("Origional Queue:", Queue);
 
-Queue = AddQueue(Queue, "Six");//adds six to the end of the queue
+Queue = AddQueue(Queue, "Six");//adds six to the end of the "Queue"
 PrintQueue("Added 6:", Queue);
 
-Queue = RemoveQueue(Queue);//Removes one from the queue
+Queue = RemoveQueue(Queue);//Removes one from the "Queue"
 PrintQueue("Removed 1:", Queue);
 
 Console.WriteLine($"Count: { Queue.Count }");
@@ -347,15 +347,16 @@ foreach (var item in X)//Prints the final list
 */
 
 //-----TASK 4-----
+/*
 //Solution 1 = With Predefined Functions
 List<int> Checklist = new List<int>();
 
-for (int i = 0; i < 26; i++)
+for (int i = 0; i < 26; i++)//generates list of 26 0's 
 {
     Checklist.Add(0);
 }
 
-List<char> Alphabet = new List<char>()
+List<char> Alphabet = new List<char>()//List of alphabet to check against
 {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 };
@@ -363,7 +364,7 @@ List<char> Alphabet = new List<char>()
 Console.WriteLine("Please enter a Pangram: ");
 string UserInput = Console.ReadLine().ToLower();
 
-bool AllInAlphabet = false;
+bool AllInAlphabet = false;//used to record whether the check found all the letters of the alphabet within the string
 foreach (char i in Alphabet)
 {
     if (UserInput.Contains(i))
@@ -377,7 +378,7 @@ foreach (char i in Alphabet)
     }
 }
 
-if (AllInAlphabet == true)
+if (AllInAlphabet == true)//checks whether the check outcome was true or false
 {
     Console.WriteLine($"'{UserInput}' is a pangram.");
 }
@@ -385,55 +386,61 @@ else
 {
     Console.WriteLine($"'{UserInput}' is not a pangram. :)");
 }
+*/
 
 //Solution 2 = Without Predefined Functions
 /*
 List<int> Checklist = new List<int>();
 
-for (int i = 0; i < 26; i++)
+for (int i = 0; i < 26; i++)//generates list of 26 0's 
 {
     Checklist.Add(0);
 }
 
-List<char> Alphabet = new List<char>()
+List<char> Alphabet = new List<char>()//List of alphabet to check against
 {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 };
 
-Console.WriteLine("Please enter a Pangram: ");
-string UserInput = Console.ReadLine().ToLower();
+Console.WriteLine("Please enter a Pangram (Please no Punctuation): ");
+string UserInput = Console.ReadLine().ToLower();//gathers user input and converts to lower case
 
-foreach (char c in UserInput)
+string NoSpaces = string.Empty;
+
+foreach (char c in UserInput)//removes Spaces
 {
-    if (c == ' ')
+    if (c != ' ')
     {
-        UserInput.Remove(c);
+
+        NoSpaces += c.ToString();
     }
 }
 
-int loopcount = 0;
-foreach (char i in UserInput)
+List<char> NoSpacesorDups = NoSpaces.Distinct().ToList();//removes duplicates
+
+int loopcount = 0;//used to track which index is bieng worked on
+foreach (char i in NoSpacesorDups)//compares each item within NoSpacesorDups with the alphabet list
 {
-    bool nextletter = false;
+    bool nextletter = false;//these two lines are used to check whether the character from the list has already been confirmed to be in the list and starts on the next letter
     while (nextletter == false)
-    {
+     {
         foreach (char c in Alphabet)
-         {
+        {
             if (c == i)
             {
-                Checklist[loopcount] = Checklist[loopcount] + 1;
+                Checklist[loopcount] += 1;
                 loopcount++;
                 nextletter = true;
                 break;
             }
         }
-    }
-    nextletter = false;
+     }
+        nextletter = false;
 }
 
 bool swapActive = true;
 int temp = 0;
-while (swapActive)
+while (swapActive)//bubble sort moves any 0's up to the top of the list
 {
     swapActive = false;
     for (int i = 0; i <=Checklist.Count - 2; i++)
@@ -448,7 +455,7 @@ while (swapActive)
     }
 }
 
-if (Checklist[0] == 0)
+if (Checklist[0] == 0)//checks if the first entry of the list is a 0 or not
 {
     Console.WriteLine($"'{UserInput}' is not a pangram.");
 }
@@ -457,3 +464,8 @@ else
     Console.WriteLine($"'{UserInput}' is a pangram. :)");
 }
 */
+
+//-----TASK 5-----
+//Solution 1 = With Predefined Functions
+
+//Solution 2 = Without Predefined Functions
