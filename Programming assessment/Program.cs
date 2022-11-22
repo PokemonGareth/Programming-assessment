@@ -469,3 +469,56 @@ else
 //Solution 1 = With Predefined Functions
 
 //Solution 2 = Without Predefined Functions
+
+Console.WriteLine("Please enter a three Letter word:");
+string UsersWord = Console.ReadLine();
+
+while (UsersWord.Length != 3)
+{
+    Console.WriteLine("Oops, Make sure that it is a three Letter word:");
+    UsersWord = Console.ReadLine();
+}
+
+List<char> Letters = new List<char>();
+
+int count = 0;
+while (count < 3)
+{
+    Letters.Add(UsersWord[count]);
+    count++;
+}
+
+List<char> originalLetters = Letters;
+
+Console.WriteLine($"Anagrams for { UsersWord }:");
+
+char temp = 'x';
+char firstchar = 'x';
+List<char> jumblingList = new List<char>();
+
+Console.WriteLine($"{ Letters[0] }{ Letters[1] }{ Letters[2] }");
+
+bool missFirst = false;
+int repeats = 0;
+while (repeats < 3)
+{
+    while (missFirst == true)
+    {
+        //Move down one
+        char first = Letters[0];
+        Letters.Remove(first);
+        Letters.Add(first);
+    }
+    missFirst = true;
+    //switch around
+    jumblingList = Letters;
+    temp = jumblingList[1];
+    jumblingList[1] = jumblingList[2];
+    jumblingList[2] = temp;
+    Console.WriteLine($"{ jumblingList[0] }{ jumblingList[1] }{ jumblingList[2] }");
+    //Letters = originalLetters;
+    repeats++;
+}
+
+
+//gets char from list, removes char from gotten list, use other 2 to jumble word
