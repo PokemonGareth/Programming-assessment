@@ -469,11 +469,10 @@ else
 //Solution 1 = With Predefined Functions
 
 //Solution 2 = Without Predefined Functions
-
 Console.WriteLine("Please enter a three Letter word:");
-string UsersWord = Console.ReadLine();
+string UsersWord = Console.ReadLine().ToLower();
 
-while (UsersWord.Length != 3)
+while (UsersWord.Length != 3)//will repeat until three characters are met
 {
     Console.WriteLine("Oops, Make sure that it is a three Letter word:");
     UsersWord = Console.ReadLine();
@@ -482,7 +481,7 @@ while (UsersWord.Length != 3)
 List<char> Letters = new List<char>();
 
 int count = 0;
-while (count < 3)
+while (count < 3)//adds characters to a list
 {
     Letters.Add(UsersWord[count]);
     count++;
@@ -490,35 +489,32 @@ while (count < 3)
 
 List<char> originalLetters = Letters;
 
-Console.WriteLine($"Anagrams for { UsersWord }:");
+Console.WriteLine($"Anagrams for { UsersWord }:");//displays what the user input
 
-char temp = 'x';
-char firstchar = 'x';
+char temp = 'x';//creates functions and lists nessecary for shifting and jumbling processes
+List<char> shiftingList = Letters;
 List<char> jumblingList = new List<char>();
 
-Console.WriteLine($"{ Letters[0] }{ Letters[1] }{ Letters[2] }");
-
-bool missFirst = false;
+bool miss = true;
 int repeats = 0;
-while (repeats < 3)
+while (repeats < 3)//repeats three times
 {
-    while (missFirst == true)
+    while (miss == false)//skips the first time
     {
         //Move down one
         char first = Letters[0];
-        Letters.Remove(first);
-        Letters.Add(first);
+        shiftingList = Letters;
+        shiftingList.Remove(first);
+        shiftingList.Add(first);
+        Console.WriteLine($"{ shiftingList[0] }{ shiftingList[1] }{ shiftingList[2] }");
+        break;
     }
-    missFirst = true;
+    miss = false;
     //switch around
-    jumblingList = Letters;
+    jumblingList = shiftingList;
     temp = jumblingList[1];
     jumblingList[1] = jumblingList[2];
     jumblingList[2] = temp;
     Console.WriteLine($"{ jumblingList[0] }{ jumblingList[1] }{ jumblingList[2] }");
-    //Letters = originalLetters;
     repeats++;
 }
-
-
-//gets char from list, removes char from gotten list, use other 2 to jumble word
