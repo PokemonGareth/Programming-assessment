@@ -469,6 +469,8 @@ else
 //Solution 1 = With Predefined Functions
 
 //Solution 2 = Without Predefined Functions
+
+
 Console.WriteLine("Please enter a three Letter word:");
 string UsersWord = Console.ReadLine().ToLower();
 
@@ -491,25 +493,30 @@ List<char> originalLetters = Letters;
 
 Console.WriteLine($"Anagrams for { UsersWord }:");//displays what the user input
 
-char temp = 'x';//creates functions and lists nessecary for shifting and jumbling processes
 List<char> shiftingList = Letters;
-List<char> jumblingList = new List<char>();
+List<char> CombinedLists = new List<char>();
 
-bool miss = true;
+int switchreps = 0;
+while (switchreps < 2)//chifts the letters around so they are 2ndchar, 3rdchar then 1stchar. Repeates again so it is then 3rd, 1st then 2nd
+{
+    char first = Letters[0];
+    shiftingList = Letters;
+    shiftingList.Remove(first);
+    shiftingList.Add(first);
+    foreach (char item in shiftingList)//adds every item to the list
+    {
+        CombinedLists.Add(item);
+    }    
+}
+
+List<char> List2 = new List<char> { CombinedLists[0], CombinedLists[1], CombinedLists[2] };
+List<char> List3 = new List<char> { CombinedLists[3], CombinedLists[4], CombinedLists[5] };
+
+List<char> jumblingList = new List<char>();
 int repeats = 0;
+char temp = 'x';//creates functions and lists nessecary for shifting and jumbling processes
 while (repeats < 3)//repeats three times
 {
-    while (miss == false)//skips the first time
-    {
-        //Move down one
-        char first = Letters[0];
-        shiftingList = Letters;
-        shiftingList.Remove(first);
-        shiftingList.Add(first);
-        Console.WriteLine($"{ shiftingList[0] }{ shiftingList[1] }{ shiftingList[2] }");
-        break;
-    }
-    miss = false;
     //switch around
     jumblingList = shiftingList;
     temp = jumblingList[1];
