@@ -386,7 +386,7 @@ else
 {
     Console.WriteLine($"'{UserInput}' is not a pangram. :)");
 }
-*/
+
 
 //Solution 2 = Without Predefined Functions
 /*
@@ -469,8 +469,7 @@ else
 //Solution 1 = With Predefined Functions
 
 //Solution 2 = Without Predefined Functions
-
-
+/*
 Console.WriteLine("Please enter a three Letter word:");
 string UsersWord = Console.ReadLine().ToLower();
 
@@ -525,3 +524,4 @@ while (repeats < 3)//repeats three times
     Console.WriteLine($"{ jumblingList[0] }{ jumblingList[1] }{ jumblingList[2] }");
     repeats++;
 }
+*/
