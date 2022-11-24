@@ -467,8 +467,6 @@ else
 
 //-----TASK 5-----
 //Solution 1 = With Predefined Functions
-
-//Solution 2 = Without Predefined Functions
 /*
 Console.WriteLine("Please enter a three Letter word:");
 string UsersWord = Console.ReadLine().ToLower();
@@ -476,7 +474,58 @@ string UsersWord = Console.ReadLine().ToLower();
 while (UsersWord.Length != 3)//will repeat until three characters are met
 {
     Console.WriteLine("Oops, Make sure that it is a three Letter word:");
-    UsersWord = Console.ReadLine();
+    UsersWord = Console.ReadLine().ToLower();
+}
+
+//order randomizer, use dictionary to remove duplicates, once dictionary reaches 6 options long, then
+Random rand = new Random();
+var shuffled = UsersWord.OrderBy(_ => rand.Next()).ToList();
+
+//Converts the three characters into a single string
+string Randomized = shuffled[0].ToString() + shuffled[1].ToString() + shuffled[2].ToString();
+
+//removes duplicates from List
+List<string> Duplicates = new List<string>();
+int i = 0;
+while (Duplicates.Count < 6)
+{
+    if (!Duplicates.Contains(Randomized))
+    {
+        Duplicates.Add(Randomized);
+        i++;
+    }
+    shuffled = UsersWord.OrderBy(_ => rand.Next()).ToList();
+    Randomized = shuffled[0].ToString() + shuffled[1].ToString() + shuffled[2].ToString();
+}
+
+Console.WriteLine($"Anagrams for { UsersWord }:");
+
+foreach (string s in Duplicates)
+{
+    Console.WriteLine($"{ s }");
+}
+*/
+
+//Solution 2 = Without Predefined Functions
+/*
+static void JumbleList(List<char> CombinedLists)
+{
+    List<char> jumblingList = new List<char>();
+    //switch around
+    jumblingList = CombinedLists;
+    char temp = jumblingList[1];
+    jumblingList[1] = jumblingList[2];
+    jumblingList[2] = temp;
+    Console.WriteLine($"{ jumblingList[0] }{ jumblingList[1] }{ jumblingList[2] }");
+}
+
+Console.WriteLine("Please enter a three Letter word:");
+string UsersWord = Console.ReadLine().ToLower();
+
+while (UsersWord.Length != 3)//will repeat until three characters are met
+{
+    Console.WriteLine("Oops, Make sure that it is a three Letter word:");
+    UsersWord = Console.ReadLine().ToLower();
 }
 
 List<char> Letters = new List<char>();
@@ -488,9 +537,12 @@ while (count < 3)//adds characters to a list
     count++;
 }
 
-List<char> originalLetters = Letters;
-
 Console.WriteLine($"Anagrams for { UsersWord }:");//displays what the user input
+Console.WriteLine($"{ UsersWord }");
+
+List<char> UsersInput = UsersWord.ToList();
+
+JumbleList(UsersInput);
 
 List<char> shiftingList = Letters;
 List<char> CombinedLists = new List<char>();
@@ -505,23 +557,15 @@ while (switchreps < 2)//chifts the letters around so they are 2ndchar, 3rdchar t
     foreach (char item in shiftingList)//adds every item to the list
     {
         CombinedLists.Add(item);
-    }    
+    }
+    switchreps++;
 }
 
-List<char> List2 = new List<char> { CombinedLists[0], CombinedLists[1], CombinedLists[2] };
-List<char> List3 = new List<char> { CombinedLists[3], CombinedLists[4], CombinedLists[5] };
+List<char> list2 = new List<char> { CombinedLists[0], CombinedLists[1], CombinedLists[2] };
+Console.WriteLine($"{ CombinedLists[0] }{ CombinedLists[1] }{CombinedLists[2]}");
+JumbleList(list2);
 
-List<char> jumblingList = new List<char>();
-int repeats = 0;
-char temp = 'x';//creates functions and lists nessecary for shifting and jumbling processes
-while (repeats < 3)//repeats three times
-{
-    //switch around
-    jumblingList = shiftingList;
-    temp = jumblingList[1];
-    jumblingList[1] = jumblingList[2];
-    jumblingList[2] = temp;
-    Console.WriteLine($"{ jumblingList[0] }{ jumblingList[1] }{ jumblingList[2] }");
-    repeats++;
-}
+List<char> list3 = new List<char> { CombinedLists[3], CombinedLists[4], CombinedLists[5] };
+Console.WriteLine($"{ CombinedLists[3] }{ CombinedLists[4] }{ CombinedLists[5] }");
+JumbleList(list3);
 */
